@@ -1,0 +1,13 @@
+{{ define `main` }}
+<main>
+  {{ $paginator := .Paginate .Data.Pages }}
+
+  {{ partial `paginator.html` . }}
+
+  {{ range $paginator.Pages }}
+  {{ partial `summary.html` . }}
+  {{ end }}
+
+  {{ partial `paginator.html` . }}
+</main>
+{{ end }}

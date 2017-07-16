@@ -1,0 +1,42 @@
+<aside class="h-card">
+  {{ with .photo }}
+  <figure>
+    <img class="p-photo"
+         src="{{ . }}" />
+  </figure>
+  {{ end }}
+
+  <h1 class="p-name">
+    {{- if and (isset . `givenName`) (isset . `familyName`) -}}
+    <span class="p-given-name">{{ .givenName }}</span>
+    <span class="p-family-name">{{ .familyName }}</span>
+    {{ else }}
+    {{ .name }}
+    {{ end -}}
+  </h1>
+
+  <div>
+    {{ with .jobTitle -}}
+    <span class="p-job-title">{{ . }}</span><br />
+    {{- end }}
+    {{ with .org -}}
+    <span class="p-org">{{ . }}</span><br />
+    {{- end }}
+  </div>
+
+  {{ if or (isset . `locality`) (isset . `region`) (isset . `countryName`) }}
+  <addr class="p-adr">
+    {{ with .locality -}}
+    <span class="p-locality">{{ . }}</span><br />
+    {{- end }}
+
+    {{ with .region -}}
+    <span class="p-region">{{ . }}</span><br />
+    {{- end }}
+
+    {{ with .countryName -}}
+    <span class="p-country-name">{{ . }}</span><br />
+    {{- end }}
+  </addr>
+  {{ end }}
+</aside>

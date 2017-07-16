@@ -1,0 +1,10 @@
+{{ define `title` }}{{ .Title }}{{ end }}
+
+{{ define `main` }}
+<main>
+  <article class="h-entry">
+    {{ partial `note-header.html` . }}
+    <div class="e-content">{{ .Content }}</div>
+  </article>
+</main>
+{{ end }}
