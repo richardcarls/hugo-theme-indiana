@@ -1,42 +1,67 @@
-<aside class="h-card">
+<aside class="author-card p-author h-card">
   {{ with .photo }}
-  <figure>
+  <figure class="author-photo">
     <img class="p-photo"
          src="{{ . }}" />
   </figure>
   {{ end }}
 
-  <h1 class="p-name">
-    {{- if and (isset . `givenName`) (isset . `familyName`) -}}
-    <span class="p-given-name">{{ .givenName }}</span>
-    <span class="p-family-name">{{ .familyName }}</span>
-    {{ else }}
-    {{ .name }}
-    {{ end -}}
-  </h1>
+  <div class="author-info">
+    <h1 class="author-name p-name">
+      {{- if and (isset . `givenName`) (isset . `familyName`) -}}
+      <span class="p-given-name">{{ .givenName }}</span>&nbsp;<span class="p-family-name">{{ .familyName }}</span>
+      {{ else }}
+      {{ .name }}
+      {{ end -}}
+    </h1>
 
-  <div>
-    {{ with .jobTitle -}}
-    <span class="p-job-title">{{ . }}</span><br />
-    {{- end }}
-    {{ with .org -}}
-    <span class="p-org">{{ . }}</span><br />
-    {{- end }}
+    <div>
+      {{ with .jobTitle -}}
+      <strong class="author-job-title p-job-title">{{ . }}</strong><br />
+      {{- end }}
+      {{ with .org -}}
+      <span class="author-org p-org">{{ . }}</span>
+      {{- end }}
+    </div>
+
+    {{ if or (isset . `locality`) (isset . `region`) (isset . `countryName`) }}
+    <addr class="author-adr p-adr">
+      {{ with .locality -}}
+      <span class="p-locality">{{ . }}</span>
+      {{- end }}
+
+      {{ if isset . `region` -}}
+      {{- if isset . `locality` }}, {{ end -}}
+      <span class="p-region">{{ .region }}</span><br />
+      {{- end }}
+
+      {{ with .countryName -}}
+      <span class="p-country-name">{{ . }}</span><br />
+      {{- end }}
+    </addr>
+
+    {{ with .email }}
+    <a rel="me" class="u-email" href="{{ . }}">{{ . }}</a>
+    {{ end }}
+
+    {{ end }}
   </div>
 
-  {{ if or (isset . `locality`) (isset . `region`) (isset . `countryName`) }}
-  <addr class="p-adr">
-    {{ with .locality -}}
-    <span class="p-locality">{{ . }}</span><br />
-    {{- end }}
+  {{ if (or (isset . `uid`) (isset . `url`)) }}
+  <div class="author-links">
+    <h3 class="author-links-label">Around the web</h3>
 
-    {{ with .region -}}
-    <span class="p-region">{{ . }}</span><br />
-    {{- end }}
+    {{ with .uid }}
+    <a rel="me"
+       class="u-uid u-url"
+       href="{{ . }}">{{ . }}</a><br />
+    {{ end }}
 
-    {{ with .countryName -}}
-    <span class="p-country-name">{{ . }}</span><br />
-    {{- end }}
-  </addr>
+    {{ range .url }}
+    <a rel="me"
+       class="u-url"
+       href="{{ . }}">{{ . }}</a><br />
+    {{ end }}
+  </div>
   {{ end }}
 </aside>

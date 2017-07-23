@@ -1,11 +1,263 @@
 @charset "utf-8";
 
-html {
-  box-sizing: border-box;
-}
-
 *,
-*:before,
-*:after {
+::before,
+::after {
   box-sizing: inherit;
 }
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+html {
+  color: #353535;
+  line-height: 1.6;
+  box-sizing: border-box;
+  font-family: 'Cambria', 'Lucida Bright', 'Palatino', serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+hr {
+  height: 0;
+  overflow: visible;
+  box-sizing: content-box;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a,
+a:link {
+  color: #327cbb;
+}
+a:visited {
+  color: #7236c3;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Helvetica Condensed', 'Arial Narrow', 'Tahoma', sans-serif;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+
+/* Site */
+body {
+  position: relative;
+}
+.site-wrapper {
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+}
+
+/* Header */
+.site-header {}
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: block;
+  border-bottom: 1px solid #cccccc;
+}
+.header-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  flex-wrap: wrap-reverse;
+}
+
+.site-name {
+  flex: 0 1 auto;
+  margin-left: -0.5rem;
+  padding-top: 2rem;
+  padding-right: 0.5rem;
+  padding-bottom: 1rem;
+  padding-left: 0.5rem;
+  color: #353535;
+  font-size: 1.25rem;
+  font-family: 'Helvetica Condensed', 'Arial Narrow', 'Tahoma', sans-serif;
+  text-decoration: none;
+}
+.site-name:visited {
+  color: #353535;
+}
+
+.site-menu {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  padding-left: 2rem;
+}
+.site-menu > a {
+  flex: 0 1 auto;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.25em;
+  padding-left: 0.5rem;
+  font-family: 'Helvetica Condensed', 'Arial Narrow', 'Tahoma', sans-serif;
+}
+
+@media (min-width: 42em) {
+  .site-wrapper {
+    width: 42rem;
+  }
+}
+
+.home-content {}
+
+/* About */
+.author-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+  margin-right: -1em;
+  margin-bottom: 1rem;
+  margin-left: -1em;
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  border: 1px solid #cccccc;
+}
+.author-photo {
+  flex: 0 1 25%;
+  margin-top: 0;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.author-photo > img {
+  max-width: 100%;
+  min-width: 80px;
+  height: auto;
+}
+.author-info {
+  flex: 1 1 auto;
+  margin-right: 1rem;
+}
+.author-name {
+  margin-bottom: 0;
+}
+.author-job-title {}
+.author-org {}
+.author-adr {}
+.author-links {
+  flex: 0 1 auto;
+  margin-top: 1rem;
+}
+.author-links-label {
+  margin-bottom: 0;
+}
+.author-links > a {}
+.author-links > a[href*="twitter.com"] {}
+.author-links > a[href*="github.com"] {}
+.author-links > a[href*="linkedin.com"] {}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-end;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osxfont-smoothing: grayscale;
+}
+.pagination *,
+.pagination *::before,
+.pagination *::after {
+  text-rendering: inherit;
+  -webkit-font-smoothing: inherit;
+  -moz-osxfont-smoothing: inherit;
+  transition: font-size 0.2s ease-in-out;
+}
+.pagination > * {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding-top: 0.125rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.125rem;
+  padding-left: 0.5rem;
+  min-width: 1.0em;
+}
+
+/* Article */
+.article {}
+
+/* Article Header */
+.article-header {
+  margin-bottom: 1rem;
+}
+.article-header-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap-reverse;
+}
+.article-title {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}
+.article-date {
+  flex: 0 0 auto;
+}
+.article-categories {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+.article-content {}
+.article-footer {}

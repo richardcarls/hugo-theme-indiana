@@ -21,5 +21,4 @@ min_version = "0.25.1"
 # me = "john-doe"
 
 # [taxonomies]
-# tag = "tags"
 # category = "categories"

@@ -1,12 +1,16 @@
-<header>
-  <a href="{{ .Site.BaseURL }}" >{{ .Site.Title }}</a>
-  <nav>
-    {{ with .Site.Menus.main }}
-    <ol>
+<header class="site-header">
+  <div class="header-wrap">
+    <a class="site-name {{- if not (eq .Kind `page`) }} p-name u-url{{ end }}"
+       href="{{ .Site.BaseURL }}">
+      <span style="display: inline-block;">{{ .Site.Title }}</span>
+    </a>
+
+    <nav class="site-menu">
+      {{ with .Site.Menus.main }}
       {{ range . }}
-      <li><a href="{{ .URL | relURL }}" >{{ .Name }}</a></li>
+      <a href="{{ .URL | relURL }}">{{ .Name }}</a>
       {{ end }}
-    </ol>
-    {{ end }}
-  </nav>
+      {{ end }}
+    </nav>
+  </div>
 </header>

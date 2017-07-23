@@ -7,7 +7,7 @@
 
     <title>{{ block `title` .}}{{ .Title }}{{ end }}</title>
 
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/style.css?v={{ .Now.Unix }}" />
 
     {{ if .RSSLink -}}
     <link href="{{ .RSSLink }}"
@@ -16,14 +16,36 @@
           title="{{ .Site.Title }}" />
     {{- end }}
 
+    <!-- Icon stack -->
+    <link rel="apple-touch-icon-precomposed"
+          sizes="144x144"
+          href="{{ .Site.BaseURL }}apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed"
+          sizes="152x152"
+          href="{{ .Site.BaseURL }}apple-touch-icon-152x152.png" />
+    <link rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="{{ .Site.BaseURL }}favicon-32x32.png" />
+    <link rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="{{ .Site.BaseURL }}favicon-16x16.png" />
+
+    <meta name="application-name" content="{{ .Site.Title }}" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="{{ .Site.BaseURL }}mstile-144x144.png" />
+
     {{ .Hugo.Generator }}
   </head>
 
-  <body>
-    {{ partial `header.html` . }}
+  <body {{- if not (eq .Kind `page`) }} class="h-feed"{{ end }}>
+    <div class="site-wrapper">
+      {{ partial `header.html` . }}
 
-    {{ block `main` . }}{{ end }}
+      {{ block `main` . }}{{ end }}
 
-    {{ partial `footer.html` . }}
+      {{ partial `footer.html` . }}
+    </div>
   </body>
 </html>

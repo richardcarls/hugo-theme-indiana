@@ -1,0 +1,21 @@
+<header class="article-header">
+  <div class="article-header-wrap">
+    <h3 class="article-title p-name">
+      <a class="u-url u-uid"
+         href="{{ .Permalink }}"
+         style="display: inline-block;">{{ .Title }}</a>
+    </h3>
+
+    <time class="article-date dt-published"
+          datetime="{{ .Date.Format `2006-02-01T15:04:05-07:00` }}">{{ .Date.Format `Jan 2, 2006 3:04pm` }}</time>
+  </div>
+
+  {{ with .Params.categories }}
+  <span>Categories:&nbsp;</span>
+  <ol class="article-categories">
+    {{ range . }}
+    <li><a class="p-category" href="{{ `/categories/` | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+  </ol>
+  {{ end }}
+</header>

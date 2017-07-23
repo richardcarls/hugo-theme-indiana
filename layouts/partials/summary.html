@@ -1,18 +1,5 @@
-<article class="h-entry">
-  <header>
-    <h3 class="p-name">
-      <a class="u-url u-uid"
-         href="{{ .Permalink }}">{{ .Title }}</a>
-    </h3>
-    <time class="dt-published"
-          datetime="{{ .Date.Format `2006-02-01T15:04:05-07:00` }}">{{ .Date.Format `Jan 2, 2006 3:04pm` }}</time>
-
-    <ol>
-      {{ range .Params.tags }}
-      <li><a class="p-category" href="{{ `/tags/` | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
-      {{ end }}
-    </ol>
-  </header>
+<article class="article p-entry h-entry">
+  {{ partial `summary-header.html` . }}
 
   <div>
     <span class="p-summary">{{ .Summary }}</span>

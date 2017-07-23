@@ -1,19 +1,29 @@
 {{ define `main` }}
 <main>
+  <!-- Home content -->
+  {{ with .Content }}
+  <section class="home-content">{{ . }}</section>
+  {{ end }}
+
   <!-- Author h-card -->
   {{ $authorFile := .Site.Params.me | default .Site.Data.theme.defaults.me }}
   {{ $author := index .Site.Data.people $authorFile }}
-  {{ with $author }}{{ partial `author-card.html` . }}{{ end }}
-
-  <!-- Latest Content -->
-  {{ $paginator := .Paginate (and (where .Site.Pages `Section` `note`) (where .Site.Pages `Kind` `page`)) }}
-
-  {{ partial `paginator.html` . }}
-
-  {{ range $paginator.Pages }}
-  {{ partial `summary.html` . }}
+  {{ with $author }}
+  {{ partial `author-card.html` $author }}
   {{ end }}
 
-  {{ partial `paginator.html` . }}
+  <!-- Latest Content -->
+  <section class="home-latest">
+    <h2>Latest Posts</h2>
+    {{ $paginator := .Paginate (and (where .Site.Pages `Section` `article`) (where .Site.Pages `Kind` `page`)) }}
+
+    {{ partial `paginator.html` . }}
+
+    {{ range $paginator.Pages }}
+    {{ partial `summary.html` . }}
+    {{ end }}
+
+    {{ partial `paginator.html` . }}
+  </section>
 </main>
 {{ end }}

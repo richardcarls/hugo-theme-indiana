@@ -1,5 +1,6 @@
 {{ define `main` }}
 <main>
+  <h1>{{ .Page.Title }}</h1>
   {{ $paginator := .Paginate .Data.Pages }}
 
   {{ partial `paginator.html` . }}

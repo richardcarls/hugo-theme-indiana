@@ -1,0 +1,17 @@
+<header class="article-header">
+  <div class="article-header-wrap">
+    <h1 class="article-title p-name">{{ .Title }}</h1>
+
+    <time class="article-date dt-published"
+          datetime="{{ .Date.Format `2006-02-01T15:04:05-07:00` }}">{{ .Date.Format `Jan 2, 2006 3:04pm` }}</time>
+  </div>
+
+  {{ with .Params.categories }}
+  <span>Categories:&nbsp;</span>
+  <ol class="article-categories">
+    {{ range . }}
+    <li><a class="p-category" href="{{ `/categories/` | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+  </ol>
+  {{ end }}
+</header>
