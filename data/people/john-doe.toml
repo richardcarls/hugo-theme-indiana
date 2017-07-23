@@ -1,3 +1,4 @@
+uid = "https://example.com/"
 name = "John Doe"
 givenName = "John"
 familyName = "Doe"
@@ -7,4 +8,9 @@ org = "Hugo Themes, LLC"
 locality = "New York"
 region = "NY"
 countryName = "United States"
-photo = "/images/john-doe.jpg"
+photo = "/img/john-doe.png"
+url = [
+    "https://twitter.com/johndoe",
+    "https://github.com/johndoe",
+    "https://linkedin.com/in/johndoe"
+]

@@ -1,7 +1,7 @@
 +++
-type = "note"
-title = "Untitled Note"
-description = ""
-date = ""
+type = "entry"
+title = "{{ replace .TranslationBaseName "-" " " | title }}"
+date = {{ .Date }}
+categories = []
 draft = true
 +++
